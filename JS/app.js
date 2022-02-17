@@ -29,6 +29,26 @@ document.getElementById('calculate-button').addEventListener('click', function(e
     totalExpenses.innerText = getInnerText ('total-expenses', totalExpenses);
     balance.innerText = getInnerText ('balance', balance);
 
+    // Error handling 
+    if ( incomeInput < 0 || foodInput < 0 || rentInput < 0 || clothesInput < 0){
+        getInnerText ('total-expenses', '');
+        getInnerText ('balance', '');
+        alert('please give a greater number than 0')
+    }
+    else if (isNaN(incomeInput)== true || isNaN(foodInput) == true || isNaN(rent) == true || isNaN(clothesInput) == true ){
+        getInnerText ('total-expenses', '');
+        getInnerText ('balance', '');
+        alert('please give a number')
+    }
+    else if ( incomeInput < totalExpenses){
+        getInnerText ('total-expenses', '');
+        getInnerText ('balance', '');
+        alert('Expense is more than your income')
+    }
+    else {
+        getInnerText ('total-expenses', totalExpenses);
+        getInnerText ('balance', balance);
+    }
 })
 
 // Saving event 
