@@ -16,8 +16,7 @@ function getInnerText(amountId, amountIsAdd){
 // Calculate income & expenses event 
 
 document.getElementById('calculate-button').addEventListener('click', function(e){
-    e.preventDefault()
-    debugger;
+    e.preventDefault();
     const incomeInput = getInputValue ('income-input');
     const foodInput = getInputValue ('food-input');
     const rentInput = getInputValue ('rent-input');
@@ -30,12 +29,13 @@ document.getElementById('calculate-button').addEventListener('click', function(e
     balance.innerText = getInnerText ('balance', balance);
 
     // Error handling 
-    if ( incomeInput < 0 || foodInput < 0 || rentInput < 0 || clothesInput < 0){
+    if ( incomeInput < 0 || foodInput < 0 || rentInput < 0 || clothesInput < 0)
+    {
         getInnerText ('total-expenses', '');
         getInnerText ('balance', '');
         alert('please give a greater number than 0')
     }
-    else if (isNaN(incomeInput)== true || isNaN(foodInput) == true || isNaN(rent) == true || isNaN(clothesInput) == true ){
+    else if (isNaN(incomeInput)== true || isNaN(foodInput) == true || isNaN(rentInput) == true || isNaN(clothesInput) == true ){
         getInnerText ('total-expenses', '');
         getInnerText ('balance', '');
         alert('please give a number')
@@ -51,4 +51,15 @@ document.getElementById('calculate-button').addEventListener('click', function(e
     }
 })
 
-// Saving event 
+// Savings event 
+document.getElementById('save-button').addEventListener('click', function(e){
+    e.preventDefault();
+    debugger;
+    const savePercentage = getInputValue ('saving-input');
+    const incomeInput = getInputValue ('income-input');
+    const balance = parseFloat(document.getElementById('balance').innerText);
+
+    const savingsAmount = (incomeInput * savePercentage) / 100;
+    const remainingBalance = balance - savingsAmount;
+
+})
