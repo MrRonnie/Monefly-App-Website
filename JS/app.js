@@ -62,4 +62,26 @@ document.getElementById('save-button').addEventListener('click', function(e){
     const savingsAmount = (incomeInput * savePercentage) / 100;
     const remainingBalance = balance - savingsAmount;
 
+
+    // error handling 
+    if (savingsAmount > balance) {
+        getInnerText('saving-amount', '');
+        getInnerText('remaining-balance', '');
+        alert('can not save more than what you have in your account')
+    }
+    else if (savingsAmount < 0){
+        getInnerText('saving-amount', '');
+        getInnerText('remaining-balance', '');
+        alert('please give a greater number than 0')
+    }
+    else if ( isNaN(savePercentage)){
+        getInnerText('saving-amount', '');
+        getInnerText('remaining-balance', '');
+        alert('please give a Number')
+    }
+    else{
+        getInnerText('saving-amount', savingsAmount);
+        getInnerText('remaining-balance', remainingBalance);
+       
+    }
 })
